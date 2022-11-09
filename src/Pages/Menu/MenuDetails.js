@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 import AddReview from '../MyReview/AddReview';
 import ReviewSetion from '../MyReview/ReviewSetion';
 
 const MenuDetails = () => {
+    const {user} = useContext(AuthContext);
     const {_id, img, rating, price, description, title } = useLoaderData();
     return (
         <div>
@@ -31,12 +33,18 @@ const MenuDetails = () => {
                         </div>
                     </div>
                     <div>
-                        <AddReview id={_id}></AddReview>
+                        {
+                            user?.uid ? <AddReview id={_id}></AddReview>
+                            :<>
+                            <p className='my-8 text-3xl'>Please <Link to='/login' className='text-emerald-600 font-bold'>Login</Link> to add your review.</p>
+                             </>
+                        }
+                        
                     </div>
                 </div>
                 <div className='my-8'>
                     <h2 className='text-2xl font-bold mb-4'>User Reviews</h2>
-                    <ReviewSetion />
+                    <ReviewSetion id={_id}/>
                 </div>
             </div>
 

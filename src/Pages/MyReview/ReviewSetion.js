@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import ReviewCard from './ReviewCard';
 
-const ReviewSetion = () => {
+const ReviewSetion = ({id}) => {
     const [reviews, setReviews] = useState([]);
     useEffect( () => {
-        fetch('http://localhost:5000/reviews')
+        fetch(`http://localhost:5000/reviews?id=${id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
-    },[])
+    },[id])
     return (
         <div>
             {

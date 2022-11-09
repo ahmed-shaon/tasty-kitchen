@@ -1,34 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { AuthContext } from '../../AuthProvider/AuthProvider';
 
 const AddReview = ({ id }) => {
+    const {user} = useContext(AuthContext);
     const handleReview = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
-        const imgURL = form.img.value;
         const message = form.message.value;
         const rating = form.rating.value;
         const current = new Date();
         const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-        console.log(name, imgURL, message);
         const review = {
             itemId: id,
             name,
-            img: imgURL,
+            img: user?.photoURL,
             date,
             message,
+            email:user?.email,
             rating
         }
-        fetch('http://localhost:5000/reviews',{
+        console.log(review);
+        fetch('http://localhost:5000/review',{
             method:'POST',
             headers:{
-                'content-type':'application'
+                'content-type':'application/json'
             },
             body:JSON.stringify(review)
         })
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            if(data.acknowledged)
+            {
+                toast.success('Thank you for your review.');
+                form.reset();
+            }
         })
         .catch(err => console.log(err))
 
@@ -48,10 +56,6 @@ const AddReview = ({ id }) => {
                             <div className="col-span-full sm:col-span-3">
                                 <label htmlFor="rating" className="text-sm">Rating</label>
                                 <input type="text" name="rating" placeholder="rating out of 5" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" required />
-                            </div>
-                            <div className="col-span-full sm:col-span-3">
-                                <label htmlFor="img" className="text-sm">Image</label>
-                                <input type="text" name="img" placeholder="Image URL" className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" />
                             </div>
                             <div className="col-span-full">
                                 <label htmlFor="message" className="text-sm">Let us know your feedback.</label>

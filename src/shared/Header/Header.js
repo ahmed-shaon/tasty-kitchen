@@ -26,7 +26,7 @@ const Header = () => {
             user?.uid &&
             <>
                 <li><NavLink to='/additem'>Add Item</NavLink></li>
-                <li><NavLink to='/review'>My Review</NavLink></li>
+                <li><NavLink to='/myreview'>My Review</NavLink></li>
             </>
         }
     </>

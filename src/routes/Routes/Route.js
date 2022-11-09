@@ -9,6 +9,8 @@ import Signup from "../../Pages/Login/Signup";
 import Menu from "../../Pages/Menu/Menu";
 import Orders from "../../Pages/Orders.js/Orders";
 import MenuDetails from "../../Pages/Menu/MenuDetails";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import MyReview from "../../Pages/MyReview/MyReview";
 
 
 export const router = createBrowserRouter([
@@ -48,8 +50,12 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/menu/:id',
-                element:<MenuDetails></MenuDetails>,
+                element: <PrivateRoute><MenuDetails></MenuDetails></PrivateRoute>,
                 loader:({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+            },
+            {
+                path:'/myreview',
+                element:<MyReview></MyReview>
             }
         ]
     }
