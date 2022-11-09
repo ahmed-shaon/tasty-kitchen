@@ -34,7 +34,7 @@ const MenuDetails = () => {
                     </div>
                     <div>
                         {
-                            user?.uid ? <AddReview id={_id}></AddReview>
+                            user?.uid ? <AddReview id={_id} title={title}></AddReview>
                             :<>
                             <p className='my-8 text-3xl'>Please <Link to='/login' className='text-emerald-600 font-bold'>Login</Link> to add your review.</p>
                              </>
