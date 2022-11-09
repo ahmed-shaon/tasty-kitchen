@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA25GZu9AqJp6IeTbVsC0rh_2Z00XPFQ8I",
-  authDomain: "test-project-ad607.firebaseapp.com",
-  projectId: "test-project-ad607",
-  storageBucket: "test-project-ad607.appspot.com",
-  messagingSenderId: "195092281708",
-  appId: "1:195092281708:web:29cfb735b4233f6e201b49"
+  apiKey: "AIzaSyDo83joRHR8Jq6SACnA-ixsO5yyxEpsA88",
+  authDomain: "khub-tast.firebaseapp.com",
+  projectId: "khub-tast",
+  storageBucket: "khub-tast.appspot.com",
+  messagingSenderId: "440788321617",
+  appId: "1:440788321617:web:5c63ac92712412a50fbf70"
 };
 
 // Initialize Firebase
