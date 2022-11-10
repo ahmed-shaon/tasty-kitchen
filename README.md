@@ -1,7 +1,7 @@
 The name of the project is "TastyKitchen"
 
 Live Link: https://khub-tast.web.app
-server: http://localhost:5000
+
 
 
 About Project

@@ -23,7 +23,7 @@ const AddReview = ({ id, title }) => {
             itemName:title,
             rating
         }
-        fetch('http://localhost:5000/review',{
+        fetch('https://tasty-kitchen-server.vercel.app/review',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

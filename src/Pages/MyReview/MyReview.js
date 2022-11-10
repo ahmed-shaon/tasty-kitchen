@@ -9,7 +9,7 @@ const MyReview = () => {
     const {logOut} = useContext(AuthContext);
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
+        fetch(`https://tasty-kitchen-server.vercel.app/reviews?email=${user?.email}`,{
             headers:{
                 authorization:`Bearer ${localStorage.getItem('token')}`
             }
@@ -29,7 +29,7 @@ const MyReview = () => {
     const handleReviewDelete = (id) => {
         const agree = window.confirm('Are you sure?');
         if (agree) {
-            fetch(`http://localhost:5000/reviews/${id}`, {
+            fetch(`https://tasty-kitchen-server.vercel.app/reviews/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

@@ -10,7 +10,7 @@ const Home = () => {
     const [menu, setMenu] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/menu?home=${1}`)
+        fetch(`https://tasty-kitchen-server.vercel.app/menu?home=${1}`)
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])

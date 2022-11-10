@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
             {
                 path:'/menu/:id',
                 element: <MenuDetails></MenuDetails>,
-                loader:({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
+                loader:({params}) => fetch(`https://tasty-kitchen-server.vercel.app/menu/${params.id}`)
             },
             {
                 path:'/myreview',

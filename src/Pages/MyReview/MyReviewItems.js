@@ -23,7 +23,7 @@ const MyReviewItems = ({ review, handleReviewDelete }) => {
     const handleUpdateReview = e => {
         e.preventDefault();
         // console.log(updatedReview);
-        fetch(`http://localhost:5000/reviews/${_id}`,{
+        fetch(`https://tasty-kitchen-server.vercel.app/reviews/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

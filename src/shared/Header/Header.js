@@ -21,7 +21,7 @@ const Header = () => {
     const navItem = <>
         <li><NavLink to='/menu' style={({ isActive }) =>
             isActive ? activeStyle : undefined}>Menu</NavLink></li>
-        <li><NavLink to='/orders'>Orders</NavLink></li>
+        {/* <li><NavLink to='/orders'>Orders</NavLink></li> */}
         <li><NavLink to='/blog'>Blog</NavLink></li>
         {
             user?.uid &&

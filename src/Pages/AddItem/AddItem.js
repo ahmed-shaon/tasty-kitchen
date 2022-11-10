@@ -23,7 +23,7 @@ const AddItem = () => {
             email:user?.email
         }
         console.log(item)
-        fetch('http://localhost:5000/menu',{
+        fetch('https://tasty-kitchen-server.vercel.app/menu',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
