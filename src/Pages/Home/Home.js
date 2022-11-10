@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../../Banner.jpg';
+import ExtraServices from './ExtraServices';
+import FeatureSection from './FeatureSection';
 import MenuItem from './MenuItem';
 
 const Home = () => {
@@ -23,7 +25,7 @@ const Home = () => {
                 </div>
             </div>
             <div className='text-center my-12 lg:px-12'>
-                <h2 className='text-2xl font-semibold text-emerald-600'>Menu</h2>
+                <h2 className='text-5xl italic font-semibold text-emerald-600'>Menu</h2>
                 <p className='text-lg text-emerald-700 my-4'>Choose your menu</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                     {
@@ -39,6 +41,8 @@ const Home = () => {
                     </Link>
                 </div>
             </div>
+            <FeatureSection></FeatureSection>
+            <ExtraServices></ExtraServices>
         </div>
     );
 };

@@ -30,13 +30,13 @@ const Header = () => {
             </>
         }
     </>
-    const userInfo = <ul className="p-2 right-0 bg-slate-300">
+    const userInfo = <ul className="p-2 right-0 bg-slate-300 ">
         <li className='p-1 px-2'>{user?.displayName}</li>
         <li><a>View Profile</a></li>
         <li><button onClick={userLogout}><HiOutlineLogout className='text-2xl' />Log out</button></li>
     </ul>
     return (
-        <nav className="navbar bg-base-100 lg:px-16 font-semibold shadow-2xl">
+        <nav className="navbar bg-base-100 py-4 lg:px-16 font-semibold shadow-2xl relative z-30">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -48,7 +48,7 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">TastyKitchent</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">TastyKitchent</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

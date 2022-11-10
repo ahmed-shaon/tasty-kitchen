@@ -43,7 +43,7 @@ const MyReview = () => {
                             handleReviewDelete={handleReviewDelete}
                         ></MyReviewItems>)
                 }</div>
-                    : <div className="artboard phone-2 mx-auto flex items-center justify-center">
+                    : <div className="artboard phone-1 mx-auto flex items-center justify-center">
                         <p className='text-2xl font-bold'>No reviews were added</p>
                     </div>
             }
