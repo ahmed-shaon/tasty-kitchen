@@ -7,7 +7,9 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     if(loading){
-        return <div className="w-16 h-16 border-4 border-dashed rounded-full border-emerald-500 animate-spin dark:border-violet-400"></div>;
+        return <div className='flex justify-center'>
+        <div className="w-16 h-16 border-4 border-dashed rounded-full border-emerald-500 animate-spin dark:border-violet-400"></div> 
+        </div> ;
     }
     if(!user?.uid){
         return <Navigate to='/login' state={{from:location}} replace></Navigate>

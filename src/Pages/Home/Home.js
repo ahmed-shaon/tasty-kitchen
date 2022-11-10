@@ -14,7 +14,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])
-    useDocumentTitle("TastyKitchen");
+    useDocumentTitle("Home -TastyKitchen");
     return (
         <div>
             <div className="hero min-h-screen" style={{ backgroundImage: `url(${Banner})` }}>

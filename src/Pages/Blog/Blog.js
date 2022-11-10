@@ -44,7 +44,7 @@ const Blog = () => {
                         <img src="https://kinsta.com/wp-content/uploads/2021/03/Nodejs-Architecture.png" alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
                     </div>
                 </div>
-            </div>            
+            </div>      
         </div>
     );
 };
