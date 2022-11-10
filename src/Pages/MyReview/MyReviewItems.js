@@ -5,7 +5,7 @@ import {FaWindowClose} from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
 Modal.setAppElement('#root');
-const MyReviewItems = ({ review }) => {
+const MyReviewItems = ({ review, handleReviewDelete }) => {
     const { user } = useContext(AuthContext);
     const {_id, name, rating, message, itemName } = review;
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -57,7 +57,7 @@ const MyReviewItems = ({ review }) => {
                     <p className='my-8'><span>Messgae:</span> <span className='text-emerald-900 font-bold'>{message}</span></p>
                     <div className="card-actions justify-between">
                         <button className="btn btn-primary" onClick={openModal}>Update</button>
-                        <button className="btn btn-primary">Delete</button>
+                        <button className="btn btn-primary" onClick={() => handleReviewDelete(_id)}>Delete</button>
                     </div>
                 </div>
                 <div>

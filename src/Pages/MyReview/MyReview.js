@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import MyReviewItems from './MyReviewItems';
 
@@ -11,7 +12,26 @@ const MyReview = () => {
             .then(data => {
                 setMyReviews(data);
             })
-    }, [user?.email])
+    }, [user?.email, myReviews])
+    const handleReviewDelete = (id) => {
+        const agree = window.confirm('Are you sure?');
+        if (agree) {
+            fetch(`http://localhost:5000/reviews/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.deletedCount > 0) {
+                        toast.success('Successfully Deleted.!');
+                        const restReviews = myReviews.filter(review => review._id !== id);
+                        setMyReviews(restReviews);
+                    }
+                })
+                .catch(err => console.log(err))
+
+        }
+
+    }
     return (
         <div className=' my-8 lg:my-36 lg:mx-12'>
             {
@@ -20,6 +40,7 @@ const MyReview = () => {
                         <MyReviewItems
                             key={review._id}
                             review={review}
+                            handleReviewDelete={handleReviewDelete}
                         ></MyReviewItems>)
                 }</div>
                     : <div className="artboard phone-2 mx-auto flex items-center justify-center">

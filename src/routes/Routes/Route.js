@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
                 element:<Blog></Blog>
             },
             {
-                path:'/add-item',
+                path:'/additem',
                 element:<AddItem></AddItem>
             },
             {

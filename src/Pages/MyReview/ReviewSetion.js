@@ -7,7 +7,7 @@ const ReviewSetion = ({id}) => {
         fetch(`http://localhost:5000/reviews?id=${id}`)
         .then(res => res.json())
         .then(data => setReviews(data))
-    },[id])
+    },[id],reviews)
     return (
         <div>
             {
