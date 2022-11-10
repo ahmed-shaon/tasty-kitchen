@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../../assets/favicon.png';
 
 const Footer = () => {
     return (
@@ -6,8 +7,8 @@ const Footer = () => {
         <footer className="p-4 bg-white rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-900">
             <div className="sm:flex sm:items-center sm:justify-between">
                 <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0">
-                    <img src="https://flowbite.com/docs/images/logo.svg" className="mr-3 h-8" alt="Flowbite Logo"/>
-                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">TastyKitchen</span>
+                    <img src={logo} className="mr-3 h-8" alt="Flowbite Logo"/>
+                        <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span className='text-pink-400'>Tasty</span >Kitchen</span>
                 </a>
                 <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
                     <li>

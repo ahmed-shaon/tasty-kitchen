@@ -2,12 +2,14 @@ import React, { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 import AddReview from '../MyReview/AddReview';
 import ReviewSetion from '../MyReview/ReviewSetion';
 
 const MenuDetails = () => {
     const {user} = useContext(AuthContext);
     const {_id, img, rating, price, description, title } = useLoaderData();
+    useDocumentTitle("Menu Details -Menu");
     return (
         <div>
             <div className='grid grid-cols-1 lg:grid-cols-3'>

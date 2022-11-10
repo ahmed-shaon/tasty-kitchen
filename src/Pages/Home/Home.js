@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from '../../Banner.jpg';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 import ExtraServices from './ExtraServices';
 import FeatureSection from './FeatureSection';
 import MenuItem from './MenuItem';
@@ -13,6 +14,7 @@ const Home = () => {
             .then(res => res.json())
             .then(data => setMenu(data))
     }, [])
+    useDocumentTitle("TastyKitchen");
     return (
         <div>
             <div className="hero min-h-screen" style={{ backgroundImage: `url(${Banner})` }}>

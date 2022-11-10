@@ -46,16 +46,16 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/additem',
-                element:<AddItem></AddItem>
+                element:<PrivateRoute><AddItem></AddItem></PrivateRoute>
             },
             {
                 path:'/menu/:id',
-                element: <PrivateRoute><MenuDetails></MenuDetails></PrivateRoute>,
+                element: <MenuDetails></MenuDetails>,
                 loader:({params}) => fetch(`http://localhost:5000/menu/${params.id}`)
             },
             {
                 path:'/myreview',
-                element:<MyReview></MyReview>
+                element:<PrivateRoute><MyReview></MyReview></PrivateRoute>
             }
         ]
     }

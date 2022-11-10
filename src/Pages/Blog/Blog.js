@@ -1,6 +1,8 @@
 import React from 'react';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 
 const Blog = () => {
+    useDocumentTitle("Blog");
     return (
         <div className='my-12'>
             <h2 className='text-5xl font-bold '>Welcome to blog.</h2>
@@ -42,7 +44,7 @@ const Blog = () => {
                         <img src="https://kinsta.com/wp-content/uploads/2021/03/Nodejs-Architecture.png" alt="" className="object-cover w-full h-64 rounded sm:h-96 lg:col-span-7 dark:bg-gray-500" />
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     );
 };

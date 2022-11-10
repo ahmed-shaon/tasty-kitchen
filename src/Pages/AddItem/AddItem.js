@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 
 const AddItem = () => {
     const {user} = useContext(AuthContext);
@@ -38,6 +39,7 @@ const AddItem = () => {
             }
         })
     }
+    useDocumentTitle("Add Item -TastyKitchen");
     return (
         <div className='lg:w-1/2 mx-auto my-8 lg:my-32'>
             <h2 className='text-4xl font-bold my-6'>Please add an item to the menu.</h2>

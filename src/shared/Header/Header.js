@@ -4,6 +4,7 @@ import { HiOutlineLogout } from 'react-icons/hi';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 
+
 let activeStyle = {
     textDecoration: "",
 }
@@ -48,7 +49,7 @@ const Header = () => {
                         }
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">TastyKitchent</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold"><span className='text-pink-400'>Tasty</span>Kitchent</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">

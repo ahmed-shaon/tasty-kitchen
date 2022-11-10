@@ -3,6 +3,7 @@ import toast from 'react-hot-toast';
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 
 const Signup = () => {
     const [error, setError] = useState();
@@ -38,6 +39,7 @@ const Signup = () => {
         .then(() => {})
         .catch(err => console.log(err))
     }
+    useDocumentTitle("Signup -TastyKitchen");
     return (
         <div className=' mx-4  my-4 lg:my-12'>
             <div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 border border-3 shadow-2xl">

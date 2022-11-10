@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 import MyReviewItems from './MyReviewItems';
 
 const MyReview = () => {
@@ -32,6 +33,7 @@ const MyReview = () => {
         }
 
     }
+    useDocumentTitle("My Review -TastyKitchen");
     return (
         <div className=' my-8 lg:my-36 lg:mx-12'>
             {

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
+import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 
 const Login = () => {
     const [error, setError] = useState();
@@ -29,6 +30,7 @@ const Login = () => {
             setError(err.message);
         })
     }
+    useDocumentTitle("Login -TastyKitchen");
     return (
         <div className=' mx-4  my-4 lg:my-12'>
             <div className="w-full max-w-md mx-auto p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100 border border-3 shadow-2xl">
