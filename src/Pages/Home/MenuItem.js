@@ -11,7 +11,7 @@ const MenuItem = ({ item }) => {
             <figure>
                 <PhotoProvider>
                     <PhotoView src={img}>
-                        <img img className='h-48 w-full' src={img} alt="" />
+                        <img className='h-48 w-full' src={img} alt="" />
                     </PhotoView>
                 </PhotoProvider>
             </figure>
