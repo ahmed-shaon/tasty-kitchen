@@ -3,10 +3,11 @@ import { FaGoogle, FaFacebook, FaGithub } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../AuthProvider/AuthProvider';
 import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
+import { handleGoogleSignin } from '../../utilities/SocialLogin';
 
 const Login = () => {
     const [error, setError] = useState();
-    const {userLogin} = useContext(AuthContext);
+    const {userLogin, signInWithGoogle} = useContext(AuthContext);
     const location = useLocation();
     const naviget = useNavigate();
     const from = location.state?.from?.pathname || '/';
@@ -73,7 +74,7 @@ const Login = () => {
                 </div>
                 <div className="flex justify-center space-x-4 text-4xl">
                     <button aria-label="Log in with Google" className="p-3 rounded-sm">
-                        <FaGoogle className="w-6 h-6 fill-current hover:text-gray-700" />
+                        <FaGoogle className="w-6 h-6 fill-current hover:text-gray-700"  onClick={() =>handleGoogleSignin(signInWithGoogle, location, naviget, from)}/>
                     </button>
                     <button aria-label="Log in with Twitter" className="p-3 rounded-sm">
                         <FaFacebook className="6-5 h-6 fill-current hover:text-gray-700" />

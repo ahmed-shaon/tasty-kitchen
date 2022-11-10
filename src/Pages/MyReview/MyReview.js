@@ -6,6 +6,7 @@ import MyReviewItems from './MyReviewItems';
 
 const MyReview = () => {
     const [myReviews, setMyReviews] = useState([]);
+    const {logOut} = useContext(AuthContext);
     const { user } = useContext(AuthContext);
     useEffect(() => {
         fetch(`http://localhost:5000/reviews?email=${user?.email}`,{
@@ -13,11 +14,18 @@ const MyReview = () => {
                 authorization:`Bearer ${localStorage.getItem('token')}`
             }
         })
-            .then(res => res.json())
+            .then(res => {
+                if(res.status === 401 || res.status === 403){
+                    logOut()
+                    .then(() => {})
+                    .catch(err => {console.log(err)})
+                }
+                return res.json()
+            })
             .then(data => {
                 setMyReviews(data);
             })
-    }, [user?.email, myReviews])
+    }, [user?.email, myReviews,logOut])
     const handleReviewDelete = (id) => {
         const agree = window.confirm('Are you sure?');
         if (agree) {
