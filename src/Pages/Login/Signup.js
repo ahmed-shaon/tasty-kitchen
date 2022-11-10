@@ -7,7 +7,7 @@ import useDocumentTitle from '../../shared/DocumentTitle/DocumentTitle';
 
 const Signup = () => {
     const [error, setError] = useState();
-    const {createUser, updateUserInfo} = useContext(AuthContext);
+    const { createUser, updateUserInfo } = useContext(AuthContext);
 
     const handleLogin = e => {
         e.preventDefault();
@@ -18,26 +18,42 @@ const Signup = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirmPassword.value;
-        const profile = {displayName:name, photoURL}
-        if(password !== confirm)
-        {
+        const profile = { displayName: name, photoURL }
+        if (password !== confirm) {
             return setError('password do not match');
         }
         // console.log(name, email, password, confirm);
         createUser(email, password)
-        .then( result => {
-            console.log(result.user);
-            toast.success('Registration Successfully Completed.');
-            updateUser(profile);
-            form.reset();       
-         })
-        .catch(err => console.log(err));
+            .then(result => {
+                const user = result.user;
+                updateUser(profile);
+                const currentUser = {
+                    email: user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(currentUser)
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token);
+                        toast.success('Registration Successfully Completed.');
+                        form.reset();
+                    })
+                    .catch(err => console.err(err))
+
+            })
+            .catch(err => console.log(err));
     }
 
-    const updateUser = (profile) =>{
+    const updateUser = (profile) => {
         updateUserInfo(profile)
-        .then(() => {})
-        .catch(err => console.log(err))
+            .then(() => { })
+            .catch(err => console.log(err))
     }
     useDocumentTitle("Signup -TastyKitchen");
     return (
@@ -47,27 +63,27 @@ const Signup = () => {
                 <form onSubmit={handleLogin} className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="firstName" className="block dark:text-gray-400 text-left">First Name</label>
-                        <input type="text" name="firstName" placeholder="First Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="text" name="firstName" placeholder="First Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="lastName" className="block dark:text-gray-400 text-left">Last Name</label>
-                        <input type="text" name="lastName" placeholder="Last Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="text" name="lastName" placeholder="Last Name" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="photoURL" className="block dark:text-gray-400 text-left">Photo URL</label>
-                        <input type="text" name="photoURL" placeholder="Photo URL" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="text" name="photoURL" placeholder="Photo URL" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="email" className="block dark:text-gray-400 text-left">Email</label>
-                        <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="email" name="email" placeholder="Email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block dark:text-gray-400 text-left">Password</label>
-                        <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="password" name="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                     </div>
                     <div className="space-y-1 text-sm">
                         <label htmlFor="confirmPassword" className="block dark:text-gray-400 text-left">Confirm Password</label>
-                        <input type="password" name="confirmPassword" placeholder="Confirm Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required/>
+                        <input type="password" name="confirmPassword" placeholder="Confirm Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" required />
                         <div className="flex justify-between py-1 text-base dark:text-gray-400">
                             <p className='text-red-500'>{error}</p>
                         </div>
